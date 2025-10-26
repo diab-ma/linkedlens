@@ -1,398 +1,203 @@
-# 🔍 LinkedLens
+# LinkedLens
 
-**A Chrome extension that automatically analyzes LinkedIn feeds to classify posts into three categories: "engagement bait," "genuine value," and "neutral."**
+A Chrome extension that analyzes your LinkedIn feed and automatically tells you which posts are worth reading and which ones are just clickbait noise.
 
-Built for Knight Hacks VIII (UCF, Oct 24-26, 2025)
+Tired of wading through engagement bait? LinkedLens uses AI to filter your feed so you can focus on posts that actually matter.
 
----
+## What it does
+
+LinkedLens looks at every post on your LinkedIn feed and sorts them into two buckets: posts that are actually valuable, and posts that are just trying to get engagement. It labels them for you and can hide the junk if you want.
+
+Posts get classified as either:
+
+**Genuine Value** — Real insights, educational content, and actual discussions
+
+**Engagement Bait** — Clickbait, manipulation, and low-quality stuff
 
 ## Features
 
-✅ Automatic post extraction from LinkedIn feed
-✅ AI-powered classification using **Gemini** or **OpenRouter** APIs
-✅ **Three-category classification**: Genuine Value, Neutral, Engagement Bait
-✅ Visual labels on posts with confidence scores and reasons
-✅ **Infinite scroll support**: Continuously analyzes new posts as you scroll
-✅ Dashboard with three-way statistics breakdown and percentage bar
-✅ Auto-hide engagement bait posts with live toggling
-✅ One-click reanalysis
-✅ **Secure API key storage** (chrome.storage.local)
-✅ **Multi-provider support** (Gemini & OpenRouter)
-✅ **Persistent settings** across browser sessions
-✅ **Improved error handling** with popup notifications and rate limit detection
-✅ **Automatic retry logic** for network errors
-✅ **Processing status indicator** during analysis
+Automatic analysis — Posts get labeled as soon as they appear on your feed.
+
+Smart filtering — Hide engagement bait with a toggle to clean up your feed.
+
+Dashboard — See stats and a breakdown of what's on your feed right now.
+
+One-click reanalysis — Re-run the analysis whenever you want.
+
+Multiple AI options — Works with either Google Gemini (free) or OpenRouter (pay-per-use).
+
+Privacy focused — Your API keys stay on your device. No tracking, no data collection.
+
+Remembers your settings — Your preferences stick around between sessions.
 
 ---
 
-## Setup Instructions
+## Installation
 
-### 1. Get an API Key
+### Step 1: Get the files
 
-Choose one of the following providers:
+Download this repository as a ZIP file and extract it to a folder on your computer.
 
-#### Option A: Google Gemini (Free)
-1. Go to [Google AI Studio](https://aistudio.google.com/apikey)
-2. Sign in with your Google account
-3. Click "Create API Key"
-4. Copy the API key
+### Step 2: Load it into Chrome
 
-#### Option B: OpenRouter (Paid)
-1. Go to [OpenRouter](https://openrouter.ai/)
-2. Sign up for an account
-3. Navigate to [API Keys](https://openrouter.ai/keys)
-4. Create a new API key
-5. Copy the API key (starts with `sk-or-`)
+Open Chrome and go to chrome://extensions/. Turn on Developer mode (toggle in the top-right corner). Click "Load unpacked" and select the linkedlens folder. The extension should now appear in your toolbar.
 
-### 2. Load Extension in Chrome
+### Step 3: Set up an API key
 
-1. Open Chrome and go to `chrome://extensions/`
-2. Enable **Developer mode** (toggle in top-right corner)
-3. Click **Load unpacked**
-4. Select the `linkedlens` folder (this directory)
-5. The extension should now appear in your extensions list
+LinkedLens needs an API key to work. You can pick either of these options:
 
-### 3. Configure API Key
+**Option A: Google Gemini (Free)**
 
-1. Click the LinkedLens extension icon in Chrome toolbar
-2. In the popup, go to **Settings**
-3. Select your API provider (Gemini or OpenRouter)
-4. Enter your API key:
-   - **Gemini**: Paste your Gemini API key
-   - **OpenRouter**: Paste your OpenRouter API key and optionally specify a model (e.g., `anthropic/claude-3-haiku`)
-5. Click **Save Key**
-6. You'll see "Saved! Please refresh LinkedIn page."
+Go to Google AI Studio and create an API key. Then click the LinkedLens icon in your toolbar, go to Settings, select Gemini, paste the key, and click Save.
 
-### 4. Add Icons (Optional)
+**Option B: OpenRouter (Pay-per-use)**
 
-The extension works without custom icons, but if you want to add them:
+Sign up at OpenRouter, get an API key, then do the same thing but select OpenRouter in the settings.
 
-1. Create or download 3 icon files (16x16, 48x48, 128x128 pixels)
-2. Name them: `icon16.png`, `icon48.png`, `icon128.png`
-3. Place them in the `icons/` folder
-4. See `icons/README.md` for icon creation tips
+### Step 4: Start using it
 
-Alternatively, remove icon references from `manifest.json`:
-- Comment out or delete the `"default_icon"` and `"icons"` sections
+Open LinkedIn and wait a few seconds. LinkedLens will automatically analyze your feed and label the posts. That's it.
 
 ---
 
-## Usage
+## How to use it
 
-### First Time
+### The Dashboard
 
-1. **Configure API key** (see Setup step 3 above)
-2. Open [LinkedIn](https://www.linkedin.com)
-3. Wait for the feed to load (~2-3 seconds)
-4. The extension will automatically analyze visible posts
-5. Posts will be labeled with visual indicators:
-   - **✓ GENUINE VALUE** (green) - Helpful, educational, or insightful content
-   - **🎣 ENGAGEMENT BAIT** (red) - Clickbait or manipulative content
-   - **◉ NEUTRAL** (gray) - Announcements, job postings, etc.
-6. As you scroll, new posts are automatically analyzed
-
-### Opening the Dashboard
-
-1. Click the LinkedLens extension icon in Chrome toolbar
-2. View statistics and classified posts
-3. Toggle "Auto-hide bait posts" to filter your feed
-4. Click "Reanalyze Feed" to re-classify posts
+Click the LinkedLens icon in your toolbar to see the dashboard. You'll get a quick look at your feed stats — how many genuine posts vs engagement bait. You can see which posts got classified and reanalyze anytime you want.
 
 ### Controls
 
-- **Extension ON/OFF**: Enable or disable the extension
-- **Auto-hide bait posts**: Automatically hide posts classified as engagement bait
-- **Reanalyze Feed**: Re-run classification on current posts
-- **API Provider**: Switch between Gemini and OpenRouter
-- **API Settings**: Manage API keys securely
+Toggle the extension on and off if you want to disable it.
+
+Toggle "Auto-hide bait posts" to automatically hide the junk.
+
+Click "Reanalyze Feed" to run the analysis again.
+
+### Settings
+
+Pick which AI provider you want to use (Gemini or OpenRouter).
+
+Save your API key securely.
+
+If you're using OpenRouter, you can pick which model you want to run.
 
 ---
 
-## How It Works
+## What counts as what
 
-1. **Content Script** (`content.js`) runs automatically on LinkedIn
-2. **Extracts** posts from the DOM using multiple fallback selectors
-3. **Monitors** the feed with MutationObserver for new posts as you scroll (infinite scroll support)
-4. **Retrieves** API provider and key from secure Chrome storage
-5. **Batches** posts and sends to your chosen provider API
-6. **AI classifies** each post into three categories: `genuine_value`, `neutral`, or `engagement_bait`
-7. **Includes** confidence scores (0.0-1.0) and AI-generated reasoning for each classification
-8. **Adds visual labels** to posts with corresponding styling
-9. **Popup dashboard** shows three-way statistics with percentage breakdown
-10. **Auto-hide** feature can automatically hide engagement bait posts
-11. **Settings persist** across browser sessions via chrome.storage.local
+**Genuine Value**
 
----
+These are posts that actually have something useful to say:
+- Real insights and advice you can actually use
+- Content that teaches you something
+- Honest stories where you learn a lesson
+- News and analysis from your industry
+- Specific data and research-backed claims
+- Conversations that feel real and thoughtful
 
-## File Structure
+**Engagement Bait**
 
-```
-linkedlens/
-├── manifest.json          # Extension configuration (Manifest V3)
-├── content.js             # Main logic (runs on LinkedIn)
-├── popup.html             # Dashboard UI with settings
-├── popup.js               # Dashboard logic and API management
-├── popup.css              # Dashboard styles
-├── icons/                 # Extension icons
-│   └── README.md          # Icon instructions
-├── CLAUDE.md              # Project architecture/instructions
-└── README.md              # This file
-```
+These are posts trying to game the algorithm and waste your time:
+- Clickbait headlines like "You won't believe what happens next"
+- Posts begging you to comment or tag someone
+- Fake humble brags and self-congratulations
+- Overly promotional or salesy garbage
+- Motivational quotes with zero substance
+- Posts that exist just to farm reactions
 
 ---
 
-## Classification Criteria
+## AI providers
 
-### Genuine Value (✓)
-- Helpful insights and actionable advice
-- Educational content with substance
-- Honest personal stories with lessons learned
-- Industry news and analysis
-- Thoughtful discussions on meaningful topics
-- Specific, data-backed insights
+You need to pick one to use LinkedLens. Both work the same way classification-wise, so it just comes down to what you prefer.
 
-### Engagement Bait (🎣)
-- Clickbait headlines ("You won't believe...", "This one trick...")
-- Manipulative engagement prompts ("Agree? Comment below!", "Tag someone who...")
-- Humble brags or virtue signaling
-- Overly promotional content
-- Generic motivational quotes with no substance
-- Posts designed solely for reactions and engagement
+**Google Gemini**
 
-### Neutral (◉)
-- Job postings and career announcements
-- Company news and announcements
-- Personal milestone celebrations
-- Simple questions asking for help
-- Basic information sharing (no editorial slant)
+Free tier available. Fast. Simple to set up. Get an API key from Google and you're done. Best if you don't want to pay anything.
 
----
+**OpenRouter**
 
-## API Provider Details
-
-### Gemini API
-- **Model**: `gemini-2.0-flash` (stable)
-- **Cost**: Free tier available
-- **Speed**: Very fast
-- **Setup**: Simple API key from Google AI Studio
-- **Note**: Currently using the stable `gemini-2.0-flash` model for reliability
-
-### OpenRouter API
-- **Models**: Configurable (default: `anthropic/claude-3-haiku`)
-- **Cost**: Pay-per-use (varies by model)
-- **Speed**: Varies by model
-- **Setup**: API key from OpenRouter + model selection
-
-Both providers use the same classification prompt and produce identical results.
+Pay-per-use, so you'll be charged based on what you use. You can pick which AI model you want to run. Best if you want more flexibility or want to try different models.
 
 ---
 
 ## Troubleshooting
 
-### Extension not working?
+**Extension not working?**
 
-1. **Check you're on LinkedIn**: The extension only works on `linkedin.com`
-2. **Configure API key**: Open popup → Settings → Enter API key → Save
-3. **Refresh the page**: After saving API key, refresh LinkedIn
-4. **Check console**: Open DevTools (F12) → Console tab → Look for `[LinkedLens]` messages
-5. **Check popup for errors**: Extension shows errors in popup instead of browser alerts
+Make sure you're on LinkedIn. Check that you've saved an API key in the settings. Try refreshing the page after you save the key. If you're still stuck, open the browser console (F12) and look for any error messages starting with [LinkedLens].
 
-### No posts detected?
+**No posts showing up?**
 
-1. **Wait for page load**: LinkedIn's feed takes a moment to render
-2. **Scroll down**: Make sure posts are visible on the page
-3. **Check console**: Look for `[LinkedLens] Found X posts using selector` messages
-4. **Check selectors**: LinkedIn may have updated their DOM structure
-   - Open DevTools → Inspect a post element
-   - Update selectors in `content.js` if needed
+Wait a few seconds when you load LinkedIn — it takes a moment to analyze everything. Make sure posts are actually visible on the page. Try scrolling down. If nothing shows, refresh the page.
 
-### API errors?
+**Getting API errors?**
 
-1. **Check API key**: Make sure it's valid and saved in extension settings
-2. **Check provider selection**: Verify you selected the correct provider
-3. **Check quota**: Free tier has rate limits (check provider dashboard)
-4. **Check network**: Open DevTools → Network tab → Look for failed requests
-5. **OpenRouter users**: Verify model name is correct
+Make sure your API key is actually valid and not expired. Check if you've hit your quota on the provider's site. Make sure you picked the right provider in settings. For OpenRouter users, double-check that the model name is spelled correctly.
 
-### Posts not labeled?
+**Settings aren't saving?**
 
-1. **Check popup for errors**: Errors now display in the popup UI
-2. **Check console**: Look for `[LinkedLens]` errors in DevTools console
-3. **Reanalyze**: Click "Reanalyze Feed" in the popup
-4. **Check classification**: API may have returned unexpected format
-
-### Settings not saving?
-
-1. **Check permissions**: Extension needs `storage` permission (already in manifest)
-2. **Check console**: Look for storage errors
-3. **Try different browser**: Test in fresh Chrome profile
+Check that your browser allows Chrome extensions to use storage. Try opening a new Chrome profile and testing it there. Clear your browser cache and try again.
 
 ---
 
-## Development Notes
+## Privacy
 
-### Testing Locally
+Your API keys live on your device in Chrome's encrypted storage — they're not sent anywhere else. The extension doesn't send your data to any LinkedLens servers (we don't have any). Only the AI provider you pick gets to see the post content. There's no tracking, analytics, or any of that stuff.
 
-1. Make changes to any file
-2. Go to `chrome://extensions/`
-3. Click the **refresh icon** on LinkedLens card
-4. Refresh LinkedIn page
-5. Test changes
-
-### LinkedIn DOM Selectors
-
-LinkedIn's DOM structure may change. Current selectors in `content.js`:
-
-```javascript
-const POST_SELECTORS = [
-  'div[data-id^="urn:li:activity"]',
-  'div[data-id^="urn:li:aggregate"]',
-  '.feed-shared-update-v2',
-  'div.feed-shared-update-v2__description-wrapper'
-];
-```
-
-If posts aren't detected:
-1. Open LinkedIn in Chrome
-2. Right-click on a post → Inspect
-3. Find the parent container element
-4. Update `POST_SELECTORS` array in `content.js`
-
-### API Call Optimization
-
-- Only **1 API call** per page load (batched)
-- Analyzes **first 10-15 posts** only
-- Does **not** re-analyze on scroll
-- Keeps API costs minimal (~1-2 calls per session)
-
-### Storage Keys
-
-The extension uses `chrome.storage.local` with these keys:
-- `apiProvider`: Selected provider ('gemini' or 'openrouter')
-- `geminiApiKey`: Gemini API key
-- `openRouterApiKey`: OpenRouter API key
-- `openRouterModel`: OpenRouter model name
-- `extensionEnabled`: Extension on/off state
-- `autoHide`: Auto-hide bait posts setting
+Everything happens in your browser. Your API keys never end up in logs or source code. Requests to the AI provider are encrypted.
 
 ---
 
-## Recent Updates
+## FAQ
 
-### v1.2 (Latest - Final Polish)
-✅ **Three-category classification** (Genuine Value, Neutral, Engagement Bait)
-✅ **Infinite scroll support** with MutationObserver
-✅ **Live auto-hide toggling** without page refresh
-✅ **Confidence scores and reasoning** from AI for each classification
-✅ **Retry logic** with 1-second delay for network errors
-✅ **Rate limit detection** for both Gemini and OpenRouter APIs
-✅ **Processing status indicator** during analysis
-✅ **Enhanced empty state messages** with setup guidance
-✅ **Icon references removed** from manifest (uses default Chrome icon)
-✅ Model standardized to `gemini-2.0-flash` (stable release)
+**Is this free?**
 
-### v1.1 (Multi-Provider)
-✅ Multi-provider support (Gemini + OpenRouter)
-✅ Secure API key storage in chrome.storage.local
-✅ Persistent toggle settings across sessions
-✅ Improved error handling (popup notifications)
-✅ Enhanced LinkedIn post selectors for better detection
-✅ Provider-specific configuration UI
+The extension itself is free. Google Gemini's free tier is free (with limits). OpenRouter you have to pay for.
 
-### v1.0 (Initial)
-✅ Basic post classification
-✅ Visual labels on posts
-✅ Dashboard with statistics
-✅ Auto-hide functionality
+**Does this work on other sites?**
+
+Nope, just LinkedIn right now. Maybe we'll add other sites later.
+
+**How accurate is it?**
+
+Pretty good, but it's not perfect. AI sometimes gets confused about posts that are kind of in the middle. Use it as a helpful guide, not the final word.
+
+**Do I need to keep developer mode on?**
+
+No. You only need it to install the thing. Turn it off whenever you want after that.
+
+**Can I use a different AI model?**
+
+With OpenRouter you can. Otherwise you get what the provider offers.
 
 ---
 
-## Known Limitations
+## Things to know
 
-- API keys stored locally in Chrome (secure but not synced across devices)
-- Classifications are AI-based and may occasionally be inaccurate
-- LinkedIn's DOM structure changes may require selector updates
-- First load may take 1-2 seconds for posts to be analyzed and labeled
+API keys don't sync across devices — they stay on the machine you set them up on.
 
----
+AI classification isn't perfect. Sometimes it gets things wrong.
 
-## Future Improvements (v2)
+LinkedIn changes their site structure pretty often, which sometimes breaks the extension. We'll fix it when that happens.
 
-- ❌ Sync settings across devices (chrome.storage.sync)
-- ❌ Scroll detection for continuous analysis
-- ❌ Manual post flagging/feedback
-- ❌ Custom classification criteria
-- ❌ Training system to improve accuracy
-- ❌ Advanced settings and preferences
-- ❌ Performance optimizations
-- ❌ Export classified posts
+The first time you load a page, it takes a second or two to analyze everything.
 
----
+## How it's built
 
-## Tech Stack
+Chrome Extension Manifest V3. Vanilla JavaScript with no frameworks. Works with Google Gemini 2.0 Flash or OpenRouter APIs. Uses Chrome's storage API to keep your settings safe.
 
-- **Chrome Extension Manifest V3**
-- **Vanilla JavaScript** (no frameworks)
-- **AI Providers**:
-  - Google Gemini 2.0 Flash API
-  - OpenRouter API (multi-model support)
-- **Chrome APIs**: `runtime`, `tabs`, `scripting`, `storage`
-- **Storage**: `chrome.storage.local` for secure key management
+## Contributing
 
----
-
-## Security & Privacy
-
-- API keys stored locally using Chrome's encrypted storage
-- No data sent to third parties (only to your chosen AI provider)
-- No tracking or analytics
-- All processing happens locally in your browser
-- API keys never exposed in source code
-
----
-
-## Demo for DevPost
-
-### Screenshots Needed
-
-1. LinkedIn feed with labeled posts
-2. Extension popup dashboard with stats
-3. Settings panel with API provider selection
-4. Auto-hide feature in action
-5. Before/after comparison
-
-### Video Demo Steps
-
-1. Open LinkedIn (show feed)
-2. Extension automatically labels posts
-3. Click extension icon → show dashboard
-4. Explain stats and breakdown
-5. Show settings → API provider selection
-6. Toggle auto-hide → show bait posts disappearing
-7. Click reanalyze → show it working
-8. Explain value proposition
-
----
+Find a bug? Have an idea? Open an issue or send a PR. We're open to contributions.
 
 ## License
 
-MIT License - Built for educational purposes (hackathon project)
+MIT. Use it however you want.
 
----
+## Need help?
 
-## Credits
+Check the troubleshooting section above. Open your browser console (F12) to see detailed logs. Open an issue on GitHub if you need more help.
 
-Built solo with Claude Code assistance for Knight Hacks VIII
-UCF - October 24-26, 2025
-
----
-
-## Questions?
-
-For issues or questions during the hackathon, check:
-1. Extension popup (errors display there now)
-2. Console logs (`[LinkedLens]` prefix)
-3. Chrome Extensions page (`chrome://extensions/`)
-4. This README troubleshooting section
-
-Good luck! 🚀
+Made to help you take back your LinkedIn feed.
