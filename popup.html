@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedLens</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>🔍 LinkedLens</h1>
+      <p class="tagline">LinkedIn Feed Analyzer</p>
+    </div>
+
+    <!-- API Key Settings -->
+    <div class="settings">
+      <h3>Settings</h3>
+
+      <!-- API Provider Selector -->
+      <div class="settings-group">
+        <label for="apiProviderSelect">API Provider:</label>
+        <select id="apiProviderSelect">
+          <option value="gemini">Gemini</option>
+          <option value="openrouter">OpenRouter</option>
+        </select>
+      </div>
+
+      <!-- Gemini Settings -->
+      <div id="geminiSettings" class="api-provider-settings">
+        <div class="api-key-section">
+          <label for="geminiApiKeyInput">Gemini API Key:</label>
+          <input type="password" id="geminiApiKeyInput" placeholder="Enter your Gemini API key">
+          <button id="saveGeminiKeyBtn" class="btn-secondary">Save Key</button>
+          <p id="saveGeminiStatus" class="save-status"></p>
+        </div>
+      </div>
+
+      <!-- OpenRouter Settings -->
+      <div id="openRouterSettings" class="api-provider-settings" style="display: none;">
+        <div class="api-key-section">
+          <label for="openRouterApiKeyInput">OpenRouter API Key:</label>
+          <input type="password" id="openRouterApiKeyInput" placeholder="Enter your OpenRouter API key (sk-or-...)">
+          <button id="saveOpenRouterKeyBtn" class="btn-secondary">Save Key</button>
+          <p id="saveOpenRouterStatus" class="save-status"></p>
+        </div>
+        <div class="settings-group" style="margin-top: 10px;">
+          <label for="openRouterModelInput">OpenRouter Model Name:</label>
+          <input type="text" id="openRouterModelInput" placeholder="e.g., anthropic/claude-3-haiku">
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="toggle-group">
+        <label class="toggle">
+          <input type="checkbox" id="extensionToggle" checked>
+          <span class="toggle-label">Extension ON</span>
+        </label>
+      </div>
+
+      <div class="toggle-group">
+        <label class="toggle">
+          <input type="checkbox" id="autoHideToggle">
+          <span class="toggle-label">Auto-hide bait posts</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <h2>Feed Analysis</h2>
+
+      <div id="statsContainer" class="stats-container">
+        <div class="loading">
+          <p>Loading analysis...</p>
+        </div>
+      </div>
+
+      <div id="statsBreakdown" class="stats-breakdown" style="display: none;">
+        <div class="stat-card genuine">
+          <div class="stat-icon">✓</div>
+          <div class="stat-info">
+            <div class="stat-number" id="genuineCount">0</div>
+            <div class="stat-label">Genuine Value</div>
+          </div>
+        </div>
+
+        <div class="stat-card bait">
+          <div class="stat-icon">🎣</div>
+          <div class="stat-info">
+            <div class="stat-number" id="baitCount">0</div>
+            <div class="stat-label">Engagement Bait</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="percentageBar" class="percentage-bar" style="display: none;">
+        <div class="bar">
+          <div class="bar-genuine" id="barGenuine"></div>
+          <div class="bar-bait" id="barBait"></div>
+        </div>
+        <div class="bar-labels">
+          <span class="bar-label-genuine" id="genuinePercent">0%</span>
+          <span class="bar-label-bait" id="baitPercent">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post List -->
+    <div class="post-list">
+      <h3>Classified Posts</h3>
+      <div id="postListContainer">
+        <p class="empty-state">No posts analyzed yet</p>
+      </div>
+    </div>
+
+    <!-- Reanalyze Button -->
+    <div class="actions">
+      <button id="reanalyzeBtn" class="btn-primary">🔄 Reanalyze Feed</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Built for Knight Hacks VIII</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
