@@ -1,18 +1,18 @@
 # LinkedLens
+This project was originally built for Knighthacks 2025 hackathon.
+https://devpost.com/software/linkedlens?ref_content=user-portfolio&ref_feature=in_progress
 
-A Chrome extension that analyzes your LinkedIn feed and automatically tells you which posts are worth reading and which ones are just clickbait noise.
-
-Tired of wading through engagement bait? LinkedLens uses AI to filter your feed so you can focus on posts that actually matter.
+linkedlens is a chrome extension to filter slop from your linkedin feed
 
 ## What it does
 
-LinkedLens looks at every post on your LinkedIn feed and sorts them into two buckets: posts that are actually valuable, and posts that are just trying to get engagement. It labels them for you and can hide the junk if you want.
+LinkedLens looks at every post on your LinkedIn feed and sorts them into two catagories: valuable, and just trying to get engagement. It labels them for you and can auto hide if you want.
 
 Posts get classified as either:
 
 **Genuine Value** — Real insights, educational content, and actual discussions
 
-**Engagement Bait** — Clickbait, manipulation, and low-quality stuff
+**Bait** — Clickbait, manipulation, and low-quality stuff
 
 ## Features
 
@@ -110,16 +110,15 @@ These are posts trying to game the algorithm and waste your time:
 
 ## AI providers
 
-You need to pick one to use LinkedLens. Both work the same way classification-wise, so it just comes down to what you prefer.
+You need to pick one to use LinkedLens. Both work the same way classification-wise, so it comes down to what you prefer.
 
 **Google Gemini**
 
-Free tier available. Fast. Simple to set up. Get an API key from Google and you're done. Best if you don't want to pay anything.
+Free tier available. Fast. Simple to set up. Get an API key from Google AI studio and you're done.
 
 **OpenRouter**
 
-Pay-per-use, so you'll be charged based on what you use. You can pick which AI model you want to run. Best if you want more flexibility or want to try different models.
-
+Pay-per-use, so you'll be charged based on what you use. You can pick which AI model you want to run.
 ---
 
 ## Troubleshooting
@@ -144,7 +143,7 @@ Check that your browser allows Chrome extensions to use storage. Try opening a n
 
 ## Privacy
 
-Your API keys live on your device in Chrome's encrypted storage — they're not sent anywhere else. The extension doesn't send your data to any LinkedLens servers (we don't have any). Only the AI provider you pick gets to see the post content. There's no tracking, analytics, or any of that stuff.
+Your API keys live on your device in Chrome's encrypted storage and are not sent anywhere else. The extension does not send your data to any LinkedLens servers (because we don't have any). Only the AI provider you pick gets to see the post content. There's no tracking, analytics, or anything else because I don't care about your linked in.
 
 Everything happens in your browser. Your API keys never end up in logs or source code. Requests to the AI provider are encrypted.
 
@@ -154,7 +153,7 @@ Everything happens in your browser. Your API keys never end up in logs or source
 
 **Is this free?**
 
-The extension itself is free. Google Gemini's free tier is free (with limits). OpenRouter you have to pay for.
+The extension itself is free. Google Gemini's free tier is free (with limits). OpenRouter you may have to pay for.
 
 **Does this work on other sites?**
 
@@ -166,11 +165,11 @@ Pretty good, but it's not perfect. AI sometimes gets confused about posts that a
 
 **Do I need to keep developer mode on?**
 
-No. You only need it to install the thing. Turn it off whenever you want after that.
+No, only needed to install the extenion. Turn it off whenever you want after that.
 
 **Can I use a different AI model?**
 
-With OpenRouter you can. Otherwise you get what the provider offers.
+With OpenRouter you can.
 
 ---
 
@@ -180,9 +179,9 @@ API keys don't sync across devices — they stay on the machine you set them up 
 
 AI classification isn't perfect. Sometimes it gets things wrong.
 
-LinkedIn changes their site structure pretty often, which sometimes breaks the extension. We'll fix it when that happens.
+LinkedIn changes their site structure pretty often, which will sometimes breaks the extension. I'll try to fix it when that happens.
 
-The first time you load a page, it takes a second or two to analyze everything.
+The first time you load a page, it takes a few seconds analyze everything.
 
 ## How it's built
 
@@ -194,10 +193,9 @@ Find a bug? Have an idea? Open an issue or send a PR. We're open to contribution
 
 ## License
 
-MIT. Use it however you want.
+MIT. Use however you want.
 
 ## Need help?
 
 Check the troubleshooting section above. Open your browser console (F12) to see detailed logs. Open an issue on GitHub if you need more help.
 
-Made to help you take back your LinkedIn feed.
