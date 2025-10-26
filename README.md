@@ -46,11 +46,11 @@ Open Chrome and go to chrome://extensions/. Turn on Developer mode (toggle in th
 
 LinkedLens needs an API key to work. You can pick either of these options:
 
-**Option A: Google Gemini (Free)**
+**Option A: Google Gemini**
 
 Go to Google AI Studio and create an API key. Then click the LinkedLens icon in your toolbar, go to Settings, select Gemini, paste the key, and click Save.
 
-**Option B: OpenRouter (Pay-per-use)**
+**Option B: OpenRouter**
 
 Sign up at OpenRouter, get an API key, then do the same thing but select OpenRouter in the settings.
 
@@ -130,7 +130,7 @@ Make sure you're on LinkedIn. Check that you've saved an API key in the settings
 
 **No posts showing up?**
 
-Wait a few seconds when you load LinkedIn — it takes a moment to analyze everything. Make sure posts are actually visible on the page. Try scrolling down. If nothing shows, refresh the page.
+Wait a few seconds when you load LinkedIn, it takes a moment to analyze everything. Make sure posts are actually visible on the page. Try scrolling down. If nothing shows, refresh the page.
 
 **Getting API errors?**
 
