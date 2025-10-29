@@ -10,7 +10,7 @@ linkedlens is a chrome extension to filter slop from your linkedin feed
 
 Posts get classified as either:
 
-**Genuine Value**: Real insights, educational content, and actual discussions
+**Genuine Value**: Real insights, educational content, actual discussions
 
 **Bait**: Clickbait, manipulation, low-quality stuff
 
