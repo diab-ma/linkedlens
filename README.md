@@ -6,7 +6,8 @@ linkedlens is a chrome extension to filter slop from your linkedin feed
 
 ## What it does
 
-LinkedLens looks at every post on your LinkedIn feed and sorts them into two catagories: valuable, and just trying to get engagement. It labels them for you and can auto hide if you want.
+linkedlens is a chrome extension to filter slop from your linkedin feed
+
 
 Posts get classified as either:
 
