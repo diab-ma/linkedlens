@@ -2,11 +2,10 @@
 This project was originally built for Knighthacks 2025 hackathon.
 https://devpost.com/software/linkedlens?ref_content=user-portfolio&ref_feature=in_progress
 
-linkedlens is a chrome extension to filter slop from your linkedin feed
-
 ## What it does
 
 linkedlens is a chrome extension to filter slop from your linkedin feed
+
 
 
 Posts get classified as either:
@@ -14,22 +13,6 @@ Posts get classified as either:
 **Genuine Value** — Real insights, educational content, and actual discussions
 
 **Bait** — Clickbait, manipulation, low-quality stuff
-
-## Features
-
-Automatic analysis — Posts get labeled as soon as they appear on your feed.
-
-Smart filtering — Hide engagement bait with a toggle to clean up your feed.
-
-Dashboard — See stats and a breakdown of what's on your feed right now.
-
-One-click reanalysis — Re-run the analysis whenever you want.
-
-Multiple AI options — Works with either Google Gemini (free) or OpenRouter (pay-per-use).
-
-Privacy focused — Your API keys stay on your device. No tracking, no data collection.
-
-Remembers your settings — Your preferences stick around between sessions.
 
 ---
 
