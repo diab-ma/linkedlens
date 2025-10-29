@@ -51,7 +51,7 @@ Open LinkedIn and wait a few seconds. LinkedLens will automatically analyze your
 
 ### The Dashboard
 
-Click the LinkedLens icon in your toolbar to see the dashboard. You'll get a quick look at your feed stats — how many genuine posts vs engagement bait. You can see which posts got classified and reanalyze anytime you want.
+Click the LinkedLens icon in your toolbar to see the dashboard. You'll get a quick look at your feed stats which shows how many genuine posts vs engagement bait. You can see which posts got classified and reanalyze anytime you want.
 
 ### Controls
 Includes:
