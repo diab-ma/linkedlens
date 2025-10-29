@@ -12,7 +12,7 @@ Posts get classified as either:
 
 **Genuine Value** — Real insights, educational content, and actual discussions
 
-**Bait** — Clickbait, manipulation, and low-quality stuff
+**Bait** — Clickbait, manipulation, low-quality stuff
 
 ## Features
 
@@ -40,23 +40,25 @@ Download this repository as a ZIP file and extract it to a folder on your comput
 
 ### Step 2: Load it into Chrome
 
-Open Chrome and go to chrome://extensions/. Turn on Developer mode (toggle in the top-right corner). Click "Load unpacked" and select the linkedlens folder. The extension should now appear in your toolbar.
+Open Chrome and go to chrome://extensions
+Turn on Developer mode 
+Click "Load unpacked" and select your linkedlens folder
+The extension should now appear in your toolbar
 
 ### Step 3: Set up an API key
 
 LinkedLens needs an API key to work. You can pick either of these options:
 
-**Option A: Google Gemini**
-
+** A: Google Gemini**
 Go to Google AI Studio and create an API key. Then click the LinkedLens icon in your toolbar, go to Settings, select Gemini, paste the key, and click Save.
 
-**Option B: OpenRouter**
+** B: OpenRouter**
 
 Sign up at OpenRouter, get an API key, then do the same thing but select OpenRouter in the settings.
 
 ### Step 4: Start using it
 
-Open LinkedIn and wait a few seconds. LinkedLens will automatically analyze your feed and label the posts. That's it.
+Open LinkedIn and wait a few seconds. LinkedLens will automatically analyze your feed and label the posts
 
 ---
 
@@ -67,12 +69,13 @@ Open LinkedIn and wait a few seconds. LinkedLens will automatically analyze your
 Click the LinkedLens icon in your toolbar to see the dashboard. You'll get a quick look at your feed stats — how many genuine posts vs engagement bait. You can see which posts got classified and reanalyze anytime you want.
 
 ### Controls
+Includes:
 
-Toggle the extension on and off if you want to disable it.
+A toggle the extension on and off if you want to disable it.
 
-Toggle "Auto-hide bait posts" to automatically hide the junk.
+A toggle "Auto-hide bait posts" to automatically hide posts labled as bait.
 
-Click "Reanalyze Feed" to run the analysis again.
+A click "Reanalyze Feed" to run the analysis again.
 
 ### Settings
 
@@ -108,19 +111,6 @@ These are posts trying to game the algorithm and waste your time:
 
 ---
 
-## AI providers
-
-You need to pick one to use LinkedLens. Both work the same way classification-wise, so it comes down to what you prefer.
-
-**Google Gemini**
-
-Free tier available. Fast. Simple to set up. Get an API key from Google AI studio and you're done.
-
-**OpenRouter**
-
-Pay-per-use, so you'll be charged based on what you use. You can pick which AI model you want to run.
----
-
 ## Troubleshooting
 
 **Extension not working?**
@@ -153,21 +143,21 @@ Everything happens in your browser. Your API keys never end up in logs or source
 
 **Is this free?**
 
-The extension itself is free. Google Gemini's free tier is free (with limits). OpenRouter you may have to pay for.
+The extension itself is free. API calls with your API key may or may not be free, depending on what model you use.
 
 **Does this work on other sites?**
 
-Nope, just LinkedIn right now. Maybe we'll add other sites later.
+No, just LinkedIn right now. Maybe I'll add other sites later.
 
 **How accurate is it?**
 
-Pretty good, but it's not perfect. AI sometimes gets confused about posts that are kind of in the middle. Use it as a helpful guide, not the final word.
+Decent, but it's not perfect. AI sometimes gets confused about posts that are kind of in the middle. Use it as a helpful guide, not the final word.
 
 **Do I need to keep developer mode on?**
 
 No, only needed to install the extenion. Turn it off whenever you want after that.
 
-**Can I use a different AI model?**
+**Can I use a different AI model other than Gemini?**
 
 With OpenRouter you can.
 
@@ -177,7 +167,7 @@ With OpenRouter you can.
 
 API keys don't sync across devices — they stay on the machine you set them up on.
 
-AI classification isn't perfect. Sometimes it gets things wrong.
+AI classification isn't perfect. Sometimes it gets things wrong. The prompt is not perfect.
 
 LinkedIn changes their site structure pretty often, which will sometimes breaks the extension. I'll try to fix it when that happens.
 
@@ -185,11 +175,11 @@ The first time you load a page, it takes a few seconds analyze everything.
 
 ## How it's built
 
-Chrome Extension Manifest V3. Vanilla JavaScript with no frameworks. Works with Google Gemini 2.0 Flash or OpenRouter APIs. Uses Chrome's storage API to keep your settings safe.
+Chrome Extension Manifest V3. Vanilla JavaScript with no frameworks. Works with Google Gemini 2.5 Flash or OpenRouter APIs. Uses Chrome's storage API to keep your settings safe.
 
 ## Contributing
 
-Find a bug? Have an idea? Open an issue or send a PR. We're open to contributions.
+Find a bug? Have an idea? Open an issue or send a PR. Open to contributions.
 
 ## License
 
