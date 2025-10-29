@@ -10,9 +10,9 @@ linkedlens is a chrome extension to filter slop from your linkedin feed
 
 Posts get classified as either:
 
-**Genuine Value**: Real insights, educational content, actual discussions
+Genuine Value: Real insights, educational content, actual discussions
 
-**Bait**: Clickbait, manipulation, low-quality stuff
+Bait: Clickbait, manipulation, low-quality stuff
 
 ---
 
@@ -33,10 +33,11 @@ The extension should now appear in your toolbar
 
 LinkedLens needs an API key to work. You can pick either of these options:
 
-** A: Google Gemini**
+A: Google Gemini
+
 Go to Google AI Studio and create an API key. Then click the LinkedLens icon in your toolbar, go to Settings, select Gemini, paste the key, and click Save.
 
-** B: OpenRouter**
+B: OpenRouter
 
 Sign up at OpenRouter, get an API key, then do the same thing but select OpenRouter in the settings.
 
